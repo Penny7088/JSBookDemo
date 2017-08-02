@@ -33,7 +33,9 @@ var UnityLayer = cc.Layer.extend({
         // this.loadRepeatAction();
         // this.loadRepeatForeverAction();
         // this.loadSequenceAction();
-        this.loadSpawnAction();
+        // this.loadSpawnAction();
+        // this.loadSpeedAction();
+        this.loadActionEaseAction();
     },
     loadMoveAction: function () {
         var node = new cc.Sprite(res.sh_node_128_png);
@@ -305,9 +307,29 @@ var UnityLayer = cc.Layer.extend({
         node.setPosition(cc.winSize.width / 2, cc.winSize.height / 2);
 
         var moveBy = cc.moveBy(1, cc.p(-200, 0));
-        var blink = cc.blink(0.5,8);
-        var spawn = cc.spawn(moveBy,blink); //并发
+        var blink = cc.blink(0.5, 8);
+        var spawn = cc.spawn(moveBy, blink); //并发
         node.runAction(spawn);
+    },
+    loadSpeedAction: function () {
+        //【举例】：用时0.5秒，节点旋转-90度，重复4次，速度为原来的5倍
+        var node = new cc.Sprite(res.sh_node_128_png);
+        this.addChild(node);
+        node.setPosition(cc.winSize / 2, cc.winSize.height / 2);
+
+        var rotate = cc.rotateBy(0.5, -90);
+        var repeat = rotate.repeatForever();
+        var speed = cc.speed(repeat, 5);
+        node.runAction(speed);
+    },
+    loadActionEaseAction: function () {
+        var node = new cc.Sprite(res.sh_node_128_png);
+        this.addChild(node);
+        node.setPosition(cc.winSize.width / 2, cc.winSize.height / 2);
+        //【例子】：2秒时间，携带弹性缓冲效果，让节点的X轴坐标向左移动300像素
+        var moveTo = cc.moveTo(2,cc.p(300,0));
+        var interval = moveTo.easing(cc.easeElasticIn());
+        node.runAction(interval);
     }
 });
 
