@@ -29,7 +29,11 @@ var UnityLayer = cc.Layer.extend({
         // this.loadOrbitCameraAction();
         // this.loadAnimationPlistAction();
         // this.loadAnimationByFileAction();
-        this.loadDelayTime();
+        // this.loadDelayTime();
+        // this.loadRepeatAction();
+        // this.loadRepeatForeverAction();
+        // this.loadSequenceAction();
+        this.loadSpawnAction();
     },
     loadMoveAction: function () {
         var node = new cc.Sprite(res.sh_node_128_png);
@@ -271,6 +275,39 @@ var UnityLayer = cc.Layer.extend({
         var rotate = cc.rotateBy(0.5, -90);
         var repeat = rotate.repeat(4); // 重复4次。
         node.runAction(repeat);
+    },
+    loadRepeatForeverAction: function () {
+        var node = new cc.Sprite(res.sh_node_128_png);
+        this.addChild(node);
+        node.setPosition(cc.winSize.width / 2, cc.winSize.height / 2);
+        //【举例】：用时0.5秒，节点旋转-90度，一直重复执行。
+        var rotateBy = cc.rotateBy(0.5, -90);
+        var repeatForever = rotateBy.repeatForever();
+        node.runAction(repeatForever);
+    },
+    loadSequenceAction: function () {
+        var node = new cc.Sprite(res.sh_node_128_png);
+        node.setPosition(cc.winSize.width / 2, cc.winSize.height / 2);
+        this.addChild(node)
+        //【举例】：每个动作耗时0.5秒，先后按顺序执行了移动、闪烁、缩放和旋转4个动作。
+        var moveBy = cc.moveBy(0.5, cc.p(-100, 0));
+        var blink = cc.blink(0.5, 8);
+        var scaleTo = cc.scaleTo(0.5, 1.5);
+        var rotateTo = cc.rotateTo(0.5, 90);
+        var sequence = cc.sequence(moveBy, blink, scaleTo, rotateTo);
+        node.runAction(sequence);
+
+    },
+    loadSpawnAction: function () {
+        //【举例】：两个动作并发执行。其一：用1秒的时间，节点的x轴坐标左移200。其二：用时0.5秒，闪烁8次。
+        var node = new cc.Sprite(res.sh_node_128_png);
+        this.addChild(node);
+        node.setPosition(cc.winSize.width / 2, cc.winSize.height / 2);
+
+        var moveBy = cc.moveBy(1, cc.p(-200, 0));
+        var blink = cc.blink(0.5,8);
+        var spawn = cc.spawn(moveBy,blink); //并发
+        node.runAction(spawn);
     }
 });
 
