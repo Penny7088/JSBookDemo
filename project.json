@@ -19,6 +19,7 @@
     "src/app.js",
     "src/UnitScene.js",
     "src/UnitEvent.js",
-    "src/Rocker.js"
+    "src/Rocker.js",
+    "src/UnitParticle.js"
   ]
 }

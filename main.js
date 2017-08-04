@@ -92,8 +92,8 @@ cc.game.onStart = function(){
         cc.textureCache.addImage(res.sh_node_1024_png);
 
         // cc.director.runScene(new Unity_1_action());
-        cc.director.runScene(new unitEvent());
-
+        // cc.director.runScene(new unitEvent());
+        cc.director.runScene(new Unit_Particle());
 
     }, this);
 };
