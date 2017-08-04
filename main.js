@@ -91,8 +91,8 @@ cc.game.onStart = function(){
         cc.textureCache.addImage(res.sh_node_512_png);
         cc.textureCache.addImage(res.sh_node_1024_png);
 
-        cc.director.runScene(new Unity_1_action());
-
+        // cc.director.runScene(new Unity_1_action());
+        cc.director.runScene(new unitEvent());
 
 
     }, this);

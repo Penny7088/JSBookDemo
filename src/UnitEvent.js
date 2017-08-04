@@ -34,17 +34,17 @@ var RockerLayer = cc.Layer.extend({
         node.setPosition(480, 320);
     },
     loadRocker: function () {
-        var roker = new Roker(res.u5_control_base_png, res.u5_control_knob_png, ROCKER_TYPE.DEFAULT);
-        this.addChild(roker);
-        roker.setCallback(function (vec) {
+        var node = new Rocker(res.u5_control_base_png, res.u5_control_knob_png, ROCKER_TYPE.DEFAULT);
+        this.addChild(node);
+        node.setCallback(function (vec) {
             cc.log("---------------");
             cc.log("速度，x：", vec.x, " y：", vec.y);
-            cc.log("角度：", roker.angle);
-            cc.log("方向：", roker.direction);
+            cc.log("角度：", node.angle);
+            cc.log("方向：", node.direction);
             this.cocosIcon.x += vec.x * 10;
             this.cocosIcon.y += vec.y * 10;
         }.bind(this));
-        roker.setPosition(200, 130);
+        node.setPosition(200, 130);
     }
 });
 

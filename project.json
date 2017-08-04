@@ -17,6 +17,8 @@
   "jsList": [
     "src/resource.js",
     "src/app.js",
-    "src/UnitScene.js"
+    "src/UnitScene.js",
+    "src/UnitEvent.js",
+    "src/Rocker.js"
   ]
 }
