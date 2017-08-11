@@ -21,6 +21,7 @@
     "src/UnitEvent.js",
     "src/Rocker.js",
     "src/UnitParticle.js",
-    "src/UnitUI.js"
+    "src/UnitUI.js",
+    "src/UnitData.js"
   ]
 }

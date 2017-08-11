@@ -93,8 +93,9 @@ cc.game.onStart = function(){
 
         // cc.director.runScene(new Unity_1_action());
         // cc.director.runScene(new unitEvent());
-        // cc.director.runScene(new Unit_Particle());
-        cc.director.runScene(new Unit_Ui());
+        cc.director.runScene(new Unit_Particle());
+        // cc.director.runScene(new Unit_Ui());
+        // cc.director.runScene(new DataSencen());
     }, this);
 };
 cc.game.run();
