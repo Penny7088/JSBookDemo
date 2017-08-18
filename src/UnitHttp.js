@@ -2,6 +2,8 @@
 * 作者:penny
 * 在命令行   node UnitHttp.js      再到网页输入本地地址127.0.01:3000
 */
+
+
 var io = require("socket.io").listen(3000);
 console.log('Server on port 3000');
 io.sockets.on('connection',function (socket) {
